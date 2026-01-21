@@ -1,10 +1,13 @@
+import os
 import streamlit as st
 import requests
 import json
+from dotenv import load_dotenv
 
-MULE_API_URL = "http://localhost:8081/jira-agent"
+load_dotenv()
+
+MULE_API_URL = os.getenv("MULE_API_URL")
 TEMPLATE_FILE = "Jira_Issue.json"
-
 def load_payload_template():
     with open(TEMPLATE_FILE, "r") as f:
         return f.read()
